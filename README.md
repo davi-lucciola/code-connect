@@ -5,9 +5,9 @@ I am gonna document my learns in this repositories while i am doing the course.
 
 ## 📖 Learning Tips
 
-### Server Side Rendenring
-
 ---
+
+### Server Side Rendenring
 
 1. SSR Benefits
 
