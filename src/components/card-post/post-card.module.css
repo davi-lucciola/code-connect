@@ -1,0 +1,42 @@
+.article {
+  color: #bcbcbc;
+  background: #171d1f;
+  border-radius: 8px;
+  max-width: 486px;
+}
+
+.header {
+  padding: 24px;
+  background: #888888;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
+}
+
+.header figure {
+  margin: 0;
+}
+
+.header figure img {
+  width: 100%;
+  height: 100%;
+  border-radius: 8px;
+}
+
+.section {
+  padding-top: 16px;
+  padding-inline: 16px;
+}
+
+.section * {
+  margin: 0;
+}
+
+.footer {
+  display: flex;
+  justify-content: flex-end;
+
+  padding-bottom: 16px;
+  padding-inline: 16px;
+
+  margin-top: 32px;
+}
