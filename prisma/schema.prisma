@@ -6,7 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output   = "../src/generated/prisma"
+  // output   = "../src/generated/client" (By Now Its Not Necessary)
 }
 
 datasource db {
@@ -27,7 +27,7 @@ model Post {
   id        Int      @id @default(autoincrement())
   cover     String
   title     String
-  slug      String
+  slug      String   @unique
   body      String
   markdown  String
   createdAt DateTime @default(now())
