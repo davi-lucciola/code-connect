@@ -1,0 +1,18 @@
+.postPageContainer {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.h1 {
+  color: #888888;
+  font-weight: 600;
+  margin: 0;
+  margin-bottom: 8px;
+}
+
+.code {
+  padding: 16px;
+  color: #bcbcbc;
+  background: #171d1f;
+}
