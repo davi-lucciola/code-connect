@@ -5,6 +5,10 @@ import styles from "./page.module.css";
 import { Pagination, PaginationQuery } from "@/models/pagination";
 import Link from "next/link";
 
+type HomeProps = {
+  searchParams: PaginationQuery;
+};
+
 async function getAllPosts(page: number): Promise<Pagination<Post[]>> {
   const response = await fetch(
     `http://localhost:3042/posts?_page=${page}&_per_page=6`
@@ -21,7 +25,7 @@ async function getAllPosts(page: number): Promise<Pagination<Post[]>> {
   }
 
   if (!response.ok) {
-    logger.error("Houve um error ao buscar posts: ");
+    logger.error("Houve um error ao buscar posts.");
     return { data: [] };
   }
 
@@ -29,11 +33,7 @@ async function getAllPosts(page: number): Promise<Pagination<Post[]>> {
   return await response.json();
 }
 
-export default async function Home({
-  searchParams,
-}: {
-  searchParams: PaginationQuery;
-}) {
+export default async function HomePage({ searchParams }: HomeProps) {
   const currentPage = searchParams.page || 1;
   const { data: posts, prev, next } = await getAllPosts(currentPage);
 

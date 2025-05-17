@@ -1,8 +1,19 @@
-.article {
+.card {
   color: #bcbcbc;
   background: #171d1f;
   border-radius: 8px;
   max-width: 486px;
+}
+
+.cardHighlight {
+  color: #bcbcbc;
+  background: #171d1f;
+  border-radius: 8px;
+}
+
+.link {
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .header {
@@ -12,8 +23,13 @@
   border-top-right-radius: 8px;
 }
 
+.cardHighlight .header {
+  padding-inline: 16px;
+}
+
 .header figure {
   margin: 0;
+  height: fit-content;
 }
 
 .header figure img {
