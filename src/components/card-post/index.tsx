@@ -18,8 +18,8 @@ export const CardPost = ({ post, highlight }: CardPostProps) => {
             <Image
               src={post.cover}
               alt={`Capa do Post ${post.title}`}
-              width={438}
-              height={138}
+              width={highlight ? 962 : 438}
+              height={highlight ? 300 : 138}
             />
           </figure>
         </header>

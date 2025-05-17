@@ -6,18 +6,46 @@ import { Pagination, PaginationQuery } from "@/models/pagination";
 import Link from "next/link";
 import { db } from "@/lib/db";
 
+type PostSearchParams = PaginationQuery & { q?: string };
+
 type HomeProps = {
-  searchParams: PaginationQuery;
+  searchParams: PostSearchParams;
 };
 
-async function getAllPosts(page: number): Promise<Pagination<Post[]>> {
+async function getAllPosts(
+  page: number,
+  perPage: number,
+  search?: string
+): Promise<Pagination<Post[]>> {
   try {
+    const where: any = {};
+
+    if (search) {
+      where.title = {
+        contains: search,
+        mode: "insensitive",
+      };
+    }
+
+    const totalItems = await db.post.count({ where });
+    const totalPages = Math.ceil(totalItems / perPage);
+
+    const prev = page > 1 ? page - 1 : undefined;
+    const next = page < totalPages ? page + 1 : undefined;
+
     const posts = await db.post.findMany({
+      take: perPage,
+      skip: (page - 1) * perPage,
+      orderBy: {
+        createdAt: "desc",
+      },
       include: {
         author: true,
       },
+      where: where,
     });
-    return { data: posts };
+
+    return { data: posts, prev: prev, next };
   } catch (error) {
     logger.error("Falha ao obter posts", { error });
     return { data: [] };
@@ -25,17 +53,34 @@ async function getAllPosts(page: number): Promise<Pagination<Post[]>> {
 }
 
 export default async function HomePage({ searchParams }: HomeProps) {
-  const currentPage = searchParams.page || 1;
-  const { data: posts, prev, next } = await getAllPosts(currentPage);
+  const page = Number(searchParams.page) || 1;
+  const perPage = Number(searchParams.perPage) || 6;
+  const searchTerm = searchParams.q;
+
+  const {
+    data: posts,
+    prev,
+    next,
+  } = await getAllPosts(page, perPage, searchTerm);
 
   return (
     <main className={styles.main}>
-      {posts.map((post) => (
-        <CardPost key={post.id} post={post} />
-      ))}
+      <section>
+        {posts.map((post) => (
+          <CardPost key={post.id} post={post} />
+        ))}
+      </section>
       <footer>
-        {prev && <Link href={`/?page=${prev}`}> Página Anterior </Link>}
-        {next && <Link href={`/?page=${next}`}> Proxima Página </Link>}
+        {prev && (
+          <Link href={{ pathname: "/", query: { page: prev, q: searchTerm } }}>
+            Página Anterior
+          </Link>
+        )}
+        {next && (
+          <Link href={{ pathname: "/", query: { page: next, q: searchTerm } }}>
+            Proxima Página
+          </Link>
+        )}
       </footer>
     </main>
   );
