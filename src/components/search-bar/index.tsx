@@ -7,7 +7,7 @@ export const SearchBar = () => {
     <form action="" autoComplete="off" className={styles.searchBar}>
       <div>
         <Image src={searchIcon} alt="Icone Pesquisa" />
-        <input type="text" placeholder="Digite o que você procura" />
+        <input type="text" name="q" placeholder="Digite o que você procura" />
       </div>
       <button type="submit"> Buscar </button>
     </form>
