@@ -18,3 +18,14 @@ I am gonna document my learns in this repositories while i am doing the course.
 > When we using external images with next `<Image />` component, we have to allow the host in the `next.config.js` to import this images. That measure assure more security in your frontend.
 
 ---
+
+### Links
+
+3. `<a>` X `<Link />`
+
+> 
+
+---
+### SSR
+
+3. Async Components
