@@ -9,7 +9,7 @@ export const metadata: Metadata = {
 };
 
 const promptFont = Prompt({
-  weight: ["400", "600"],
+  weight: ["200", "400", "600"],
   subsets: ["latin"],
   display: "swap",
 });

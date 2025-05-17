@@ -7,5 +7,8 @@ export type Post = {
   slug: string;
   body: string;
   markdown: string;
+  createdAt: Date;
+  updatedAt: Date;
+  authorId: number;
   author: Author;
 };

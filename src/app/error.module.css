@@ -1,0 +1,25 @@
+.section {
+  color: #bcbcbc;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.section h1 {
+  margin: 0;
+  color: #81fe88;
+  margin-top: 56px;
+}
+
+.section p {
+  margin: 0;
+  font-weight: 200;
+  font-size: 26px;
+  margin-top: 16px;
+}
+
+.link {
+  color: #bfffc3;
+  font-weight: 600;
+  margin-top: 40px;
+}

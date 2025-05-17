@@ -3,6 +3,28 @@
 This repository was created for learning through Alura NextJS Course
 I am gonna document my learns in this repositories while i am doing the course.
 
+## App Router
+
+Since version 13, NextJS works with the app router. In the app router, everything in the `/app` folder can be interpreted as a route, depending on the use of special files.
+
+### Next Special Files
+
+1. page.tsx
+
+> This file declares a page in App Router. If it is in the root of `/app` folder (`/app/page.tsx`) it will define the `/` route. If it is in a subfolder like `/posts` (`/posts/page.tsx`) it will define the `/posts` route
+
+2. layout.tsx
+
+> This file declares the application layout. The layout will wrap the page, and in this file we also configure `global.css`, fonts and other global settings.
+
+3. not-found.tsx
+
+> This file declares the not found route, when the path does not exist is accessed NextJS will redirect the user to this page. This page is wrapped by `layout.tsx` 
+
+4. error.tsx
+
+> This file declares an error page (Using React Error Boundaries), when a component throws an error, this page will be rendered by NextJS. This page is wrapped by `layout.tsx`
+
 ## 📖 Learning Tips
 
 ---

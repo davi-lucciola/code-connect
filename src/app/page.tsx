@@ -4,33 +4,24 @@ import { CardPost } from "@/components/card-post";
 import styles from "./page.module.css";
 import { Pagination, PaginationQuery } from "@/models/pagination";
 import Link from "next/link";
+import { db } from "@/lib/db";
 
 type HomeProps = {
   searchParams: PaginationQuery;
 };
 
 async function getAllPosts(page: number): Promise<Pagination<Post[]>> {
-  const response = await fetch(
-    `http://localhost:3042/posts?_page=${page}&_per_page=6`
-  ).catch((error) => {
-    logger.error(
-      "Houve um error ao realizar a solicitação de busca de posts: " +
-        error.message
-    );
-    return null;
-  });
-
-  if (!response) {
+  try {
+    const posts = await db.post.findMany({
+      include: {
+        author: true,
+      },
+    });
+    return { data: posts };
+  } catch (error) {
+    logger.error("Falha ao obter posts", { error });
     return { data: [] };
   }
-
-  if (!response.ok) {
-    logger.error("Houve um error ao buscar posts.");
-    return { data: [] };
-  }
-
-  logger.info("Posts obtidos com sucesso.");
-  return await response.json();
 }
 
 export default async function HomePage({ searchParams }: HomeProps) {
