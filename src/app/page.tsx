@@ -57,9 +57,7 @@ export default async function HomePage({ searchParams }: HomeProps) {
           </Link>
         )}
         {next && (
-          <Link href={`/?page=${next}&perPage=${perPage}`}>
-            Proxima Página
-          </Link>
+          <Link href={`/?page=${next}&perPage=${perPage}`}>Proxima Página</Link>
         )}
       </footer>
     </main>

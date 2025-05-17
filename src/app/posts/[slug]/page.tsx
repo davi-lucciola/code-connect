@@ -1,46 +1,37 @@
 import { notFound } from "next/navigation";
+import { db } from "@/lib/db";
 import { logger } from "@/lib/logger";
 import { Post } from "@/models/post";
+import { CardPost } from "@/components/card-post";
 import { remark } from "remark";
 import html from "remark-html";
 import styles from "./post-page.module.css";
-import { CardPost } from "@/components/card-post";
 
 type PostPageProps = {
   params: { slug: string };
 };
 
 async function getPostBySlug(slug: string): Promise<Post | undefined> {
-  const response = await fetch(
-    `http://localhost:3042/posts?slug=${slug}`
-  ).catch((error) => {
-    logger.error(
-      "Houve um error ao realizar a solicitação de buscar post pelo slug " +
-        error.message
-    );
-    return null;
-  });
+  try {
+    const post = await db.post.findFirst({
+      include: {
+        author: true,
+      },
+      where: {
+        slug: slug,
+      },
+    });
 
-  if (!response) return;
+    if (!post) return;
 
-  if (!response.ok) {
-    logger.error("Houve um error ao buscar post pelo slug.");
-    return;
+    const processedContent = await remark().use(html).process(post.markdown);
+    post.markdown = processedContent.toString();
+
+    return post;
+  } catch (error) {
+    logger.error("Falha ao obter post com slug: ", slug, error);
+    throw error;
   }
-
-  const data = await response.json();
-
-  if (data.length == 0) {
-    return;
-  }
-  logger.info("Posts obtido pelo slug com sucesso.");
-
-  const post: Post = data[0];
-
-  const processedContent = await remark().use(html).process(post.markdown);
-  post.markdown = processedContent.toString();
-
-  return post;
 }
 
 export default async function PostPage({ params: { slug } }: PostPageProps) {
