@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import { Aside } from "@/components/aside";
+import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Code Connect",
@@ -12,7 +14,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="pt-BR">
-      <body>{children}</body>
+      <body>
+        <div className="app-container">
+          <Aside />
+          {children}
+        </div>
+      </body>
     </html>
   );
 }
