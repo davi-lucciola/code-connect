@@ -1,4 +1,5 @@
-import { Author } from "./author";
+import { Comment } from "./comment";
+import { User } from "./user";
 
 export type Post = {
   id: number;
@@ -10,5 +11,6 @@ export type Post = {
   createdAt: Date;
   updatedAt: Date;
   authorId: number;
-  author: Author;
+  author: User;
+  comments: Comment[];
 };

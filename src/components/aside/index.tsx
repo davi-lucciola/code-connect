@@ -1,6 +1,7 @@
 import Image from "next/image";
 import styles from "./aside.module.css";
 import logo from "@/assets/images/logo.png";
+import Link from "next/link";
 
 /*
 Next Learn 1:
@@ -11,13 +12,15 @@ by serving the correctly image size for each device and cast the image format to
 export const Aside = () => {
   return (
     <aside className={styles.aside}>
-      <Image
-        alt="Logo da Code Connect"
-        src={logo}
+      <Link href="/">
+        <Image
+          alt="Logo da Code Connect"
+          src={logo}
 
-        // I can do this in Next 15 if the image is in "public" folder
-        // src="/logo.png"
-      />
+          // I can do this in Next 15 if the image is in "public" folder
+          // src="/logo.png"
+        />
+      </Link>
       {/* <img src="/logo.png" alt="Logo da Code Connect" /> */}
     </aside>
   );
