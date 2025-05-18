@@ -10,6 +10,7 @@ export type Post = {
   markdown: string;
   createdAt: Date;
   updatedAt: Date;
+  likes: number;
   authorId: number;
   author: User;
 };

@@ -1,3 +1,7 @@
+.card p {
+  margin: 0;
+}
+
 .card {
   color: #bcbcbc;
   background: #171d1f;
@@ -56,10 +60,18 @@
 
 .footer {
   display: flex;
-  justify-content: flex-end;
+  justify-content: space-between;
 
   padding-bottom: 16px;
   padding-inline: 16px;
 
   margin-top: 32px;
+}
+
+.footer div {
+  text-align: center;
+}
+
+.footer div p {
+  text-align: center;
 }

@@ -37,7 +37,7 @@ async function getAllPosts(
       take: perPage,
       skip: (page - 1) * perPage,
       orderBy: {
-        createdAt: "desc",
+        id: "desc",
       },
       include: {
         author: true,
