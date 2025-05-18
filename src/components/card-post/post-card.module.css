@@ -11,11 +11,6 @@
   border-radius: 8px;
 }
 
-.link {
-  cursor: pointer;
-  text-decoration: none;
-}
-
 .header {
   padding: 24px;
   background: #888888;
@@ -48,6 +43,15 @@
 
 .section * {
   margin: 0;
+}
+
+.section p {
+  margin-block: 8px;
+}
+
+.section a {
+  color: #bfffc3;
+  font-weight: 600;
 }
 
 .footer {
