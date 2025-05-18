@@ -12,5 +12,4 @@ export type Post = {
   updatedAt: Date;
   authorId: number;
   author: User;
-  comments: Comment[];
 };
