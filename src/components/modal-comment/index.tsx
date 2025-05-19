@@ -11,7 +11,7 @@ import { postComment } from "@/actions";
 import { Post } from "@/models/post";
 
 export const ModalComment = ({ post }: { post: Post }) => {
-  const modalRef = useRef<ModalHandle>(null);
+  const modalRef = useRef<ModalHandle | null>(null);
 
   const submitComment = postComment.bind(null, post);
 

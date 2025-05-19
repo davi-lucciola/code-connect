@@ -6,6 +6,7 @@ import { CardPost } from "@/components/card-post";
 import { remark } from "remark";
 import html from "remark-html";
 import styles from "./post-page.module.css";
+import { CommentList } from "@/components/comment-list";
 
 type PostPageProps = {
   params: { slug: string };
@@ -16,7 +17,11 @@ async function getPostBySlug(slug: string): Promise<Post | undefined> {
     const post = await db.post.findFirst({
       include: {
         author: true,
-        comments: true,
+        comments: {
+          include: {
+            author: true,
+          },
+        },
       },
       where: {
         slug: slug,
@@ -46,10 +51,13 @@ export default async function PostPage({ params: { slug } }: PostPageProps) {
     <div className={styles.postPageContainer}>
       <CardPost post={post} highlight />
       <h1 className={styles.h1}> Código </h1>
-      <div
-        className={styles.code}
-        dangerouslySetInnerHTML={{ __html: post.markdown }}
-      ></div>
+      <div className={styles.code}>
+        <div dangerouslySetInnerHTML={{ __html: post.markdown }}></div>
+      </div>
+      <div className={styles.comments}>
+        <h2> Comentários </h2>
+        <CommentList comments={post.comments} />
+      </div>
     </div>
   );
 }

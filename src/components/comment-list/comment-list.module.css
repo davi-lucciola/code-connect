@@ -1,0 +1,7 @@
+.commentList {
+  list-style: none;
+}
+
+.commentList hr {
+  border-color: #171d1f;
+}

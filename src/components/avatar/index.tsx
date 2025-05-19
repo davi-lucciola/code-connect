@@ -15,7 +15,7 @@ export const Avatar = ({ name, imageUrl }: AvatarProps) => {
         width={32}
         height={32}
       />
-      <p> @{name} </p>
+      <p className="username"> @{name} </p>
     </div>
   );
 };
