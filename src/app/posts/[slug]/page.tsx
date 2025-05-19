@@ -16,6 +16,7 @@ async function getPostBySlug(slug: string): Promise<Post | undefined> {
     const post = await db.post.findFirst({
       include: {
         author: true,
+        comments: true,
       },
       where: {
         slug: slug,

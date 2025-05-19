@@ -1,10 +1,10 @@
+import Link from "next/link";
+import { db } from "@/lib/db";
 import { Post } from "@/models/post";
 import { logger } from "@/lib/logger";
 import { CardPost } from "@/components/card-post";
-import styles from "./page.module.css";
 import { Pagination, PaginationQuery } from "@/models/pagination";
-import Link from "next/link";
-import { db } from "@/lib/db";
+import styles from "./page.module.css";
 
 type PostSearchParams = PaginationQuery & { q?: string };
 
@@ -41,6 +41,7 @@ async function getAllPosts(
       },
       include: {
         author: true,
+        comments: true,
       },
       where: where,
     });

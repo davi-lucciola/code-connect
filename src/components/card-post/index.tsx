@@ -5,6 +5,7 @@ import { Avatar } from "@/components/avatar";
 import { incrementThumbsUp } from "@/actions";
 import styles from "./post-card.module.css";
 import { ThumbsUpButton } from "./thumbs-up-button";
+import { ModalComment } from "../modal-comment";
 
 type CardPostProps = {
   post: Post;
@@ -32,11 +33,15 @@ export const CardPost = ({ post, highlight }: CardPostProps) => {
         <Link href={`/posts/${post.slug}`}> Ver Detalhes </Link>
       </section>
       <footer className={styles.footer}>
-        <div>
+        <div className={styles.actions}>
           <form action={submitThumbsUp}>
             <ThumbsUpButton title={post.title} />
+            <p>{post.likes}</p>
           </form>
-          <p>{post.likes}</p>
+          <div>
+            <ModalComment post={post} />
+            <p>{post.comments.length}</p>
+          </div>
         </div>
         <Avatar name={post.author.username} imageUrl={post.author.avatar} />
       </footer>

@@ -68,10 +68,11 @@
   margin-top: 32px;
 }
 
-.footer div {
-  text-align: center;
+.footer .actions {
+  display: flex;
+  gap: 16px;
 }
 
-.footer div p {
+.footer .actions p {
   text-align: center;
 }
