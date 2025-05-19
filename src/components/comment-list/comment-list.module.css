@@ -3,5 +3,13 @@
 }
 
 .commentList hr {
+  width: 100%;
   border-color: #171d1f;
+}
+
+.commentList li {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 16px;
 }
