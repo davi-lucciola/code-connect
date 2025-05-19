@@ -1,0 +1,19 @@
+.modalBtn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  font-size: 18px;
+  padding: 12px 16px;
+  font-weight: 600;
+  background: #81fe88;
+
+  border: none;
+  border-radius: 8px;
+  transition: 0.3s;
+}
+
+.modalBtn:hover {
+  background: #71df76;
+  cursor: pointer;
+}
