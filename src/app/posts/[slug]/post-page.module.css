@@ -16,3 +16,17 @@
   color: #bcbcbc;
   background: #171d1f;
 }
+
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  background: #888888;
+  padding: 32px 16px;
+}
+
+.comments h2, .comments ul {
+  margin: 0;
+  padding: 0;
+}

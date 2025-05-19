@@ -1,0 +1,22 @@
+.comment,
+.commentHighlight {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.text {
+  margin: 0;
+}
+
+.comment p {
+  color: #171d1f;
+}
+
+.commentHighlight p {
+  color: #81fe88;
+}
+
+.commentHighlight .text {
+  color: #e1e1e1;
+}

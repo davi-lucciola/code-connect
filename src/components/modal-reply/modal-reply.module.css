@@ -1,23 +1,22 @@
-.modalComment {
+.modalReply {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.modalComment h1 {
-  color: #81fe88;
-  font-size: 32px;
-  margin: 0;
+.line {
+  height: 88px;
+  border-left: 1px solid #888888;
 }
 
-.modalComment > form {
+.modalReply > form {
   display: flex;
   flex-direction: column;
   gap: 24px;
   align-items: flex-end;
 }
 
-.modalComment > form > textarea {
+.modalReply > form > textarea {
   color: #3e3e3f;
   height: 120px;
   width: 100%;
@@ -30,4 +29,11 @@
   padding: 16px;
   font-size: 18px;
   font-family: "Prompt", sans-serif;
+}
+
+.replyParagraph {
+  color: #171d1f;
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
 }
