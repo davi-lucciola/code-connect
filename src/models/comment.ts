@@ -1,4 +1,3 @@
-// import { Post } from "./post";
 import { User } from "./user";
 
 export type Comment = {
@@ -10,4 +9,5 @@ export type Comment = {
   author?: User;
   postId: number;
   parentId: number | null;
+  childrens?: Comment[];
 };

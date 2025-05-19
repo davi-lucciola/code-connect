@@ -1,0 +1,23 @@
+.replies {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.replies hr {
+  width: 32px;
+}
+
+.replies button {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+ul.repliesList {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  
+  margin-left: 32px;
+}

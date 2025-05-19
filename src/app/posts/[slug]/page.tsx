@@ -21,6 +21,9 @@ async function getPostBySlug(slug: string): Promise<Post | undefined> {
           include: {
             author: true,
           },
+          where: {
+            parentId: null,
+          },
         },
       },
       where: {
@@ -56,7 +59,7 @@ export default async function PostPage({ params: { slug } }: PostPageProps) {
       </div>
       <div className={styles.comments}>
         <h2> Comentários </h2>
-        <CommentList comments={post.comments} />
+        <CommentList post={post} />
       </div>
     </div>
   );
